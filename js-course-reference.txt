@@ -1,4 +1,4 @@
-Main Idea of JavaScript
+1) Main Idea of JavaScript
 
 1. SAVE THE DATA
 
@@ -37,7 +37,7 @@ Main Idea of JavaScript
 
 
 
-HTML Data Attribute
+2) HTML Data Attribute
 
 - html attribute that starts with "data"
 
@@ -52,7 +52,7 @@ example data-product-name: "${product.name}"
 
 
 
-Steps to adding to cart 
+3) Steps to adding to cart 
 
 1. check if the product is already in the cart
 
@@ -60,3 +60,15 @@ Steps to adding to cart
 
 3. if its not then add it to cart
 
+
+
+
+
+4) Making the Cart icon interactive
+
+1. calculate the quantity
+
+    loop through the array
+    and add the quantity
+
+2. put the quantity on the page
