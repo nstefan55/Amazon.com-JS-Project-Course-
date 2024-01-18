@@ -1,0 +1,62 @@
+Main Idea of JavaScript
+
+1. SAVE THE DATA
+
+    data = information
+
+    (info about our products)
+
+    saved data in an object or arrays to create data structures
+
+
+
+2. GENERATE html
+
+    use the saved data to GENERATE
+
+    loop through the array of data
+
+
+    products.rating.stars * 10
+
+    We are multiplying it by 10 beacuse it displays rating-4.5.png which needs to be rating-45.png
+
+
+    priceCents / 100 to display it in dollars
+
+
+    "js show number with 2 decimal places"
+
+
+
+
+3. make it interactive
+
+
+
+
+
+
+HTML Data Attribute
+
+- html attribute that starts with "data"
+
+example data-product-name: "${product.name}"
+
+
+
+.dataset - gives us all data attributes that are signed to the button
+
+
+
+
+
+
+Steps to adding to cart 
+
+1. check if the product is already in the cart
+
+2. if it is in the cart then we increase the quanity by 1
+
+3. if its not then add it to cart
+
