@@ -1,27 +1,5 @@
 export const products = [
   {
-    id: "id1",
-    image: "images/products/backpack.jpg",
-    name: "Military Extreme Men Backpack",
-    rating: {
-      stars: 5,
-      count: 108,
-    },
-    priceCents: 2094,
-    keywords: ["backpack", "military", "men"],
-  },
-  {
-    id: "id2",
-    image: "images/products/umbrella.jpg",
-    name: "Fortnite Kids Rarebrella",
-    rating: {
-      stars: 3.5,
-      count: 225,
-    },
-    priceCents: 1199,
-    keywords: ["fortnite", "kids", "umbrella"],
-  },
-  {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
     name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
@@ -490,5 +468,28 @@ export const products = [
     },
     priceCents: 2400,
     keywords: ["sweaters", "hoodies", "apparel", "mens"],
+  },
+
+  {
+    id: "id1",
+    image: "images/products/backpack.jpg",
+    name: "Military Extreme Men Backpack",
+    rating: {
+      stars: 5,
+      count: 108,
+    },
+    priceCents: 2094,
+    keywords: ["backpack", "military", "men"],
+  },
+  {
+    id: "id2",
+    image: "images/products/umbrella.jpg",
+    name: "Fortnite Kids Rarebrella",
+    rating: {
+      stars: 3.5,
+      count: 225,
+    },
+    priceCents: 1199,
+    keywords: ["fortnite", "kids", "umbrella"],
   },
 ];
