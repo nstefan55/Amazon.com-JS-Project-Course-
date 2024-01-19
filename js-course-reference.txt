@@ -72,3 +72,44 @@ example data-product-name: "${product.name}"
     and add the quantity
 
 2. put the quantity on the page
+
+
+
+
+
+Lesson 14 - Modules
+
+Modules features - no name conflicts
+
+
+1. Create the Module 
+
+    1. create a file
+    2. don't load the file with script tag
+
+    any variables we create inside the file will be contained inside the file
+
+
+2. Get Variable out of a file
+
+    1. add type="module" attribute
+    2. export the variable
+    3. import the variable to another js file
+    
+
+import needs to be on top of the page
+
+Modules don't work by opening html files directly
+You have to use live server!
+
+import { cart as myCart } from "../data/cart.js"; to avoid naming conflicts
+
+no worries about the order of files
+
+
+
+
+
+
+
+

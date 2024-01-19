@@ -1,3 +1,8 @@
+// importing variable from another file
+
+import { cart } from "../data/cart.js";
+
+// Template HTML generating each product using object info from products.js
 let productsHTML = "";
 
 products.forEach((product) => {
