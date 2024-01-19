@@ -1,6 +1,7 @@
-// importing variable from another file
+// importing variables from another data js files
 
 import { cart } from "../data/cart.js";
+import { products } from "../data/products.js";
 
 // Template HTML generating each product using object info from products.js
 let productsHTML = "";
