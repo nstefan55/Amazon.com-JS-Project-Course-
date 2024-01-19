@@ -1,6 +1,6 @@
 // importing variables from another data js files
 
-import { cart } from "../data/cart.js";
+import { cart, addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 
 // Template HTML generating each product using object info from products.js
@@ -69,6 +69,16 @@ products.forEach((product) => {
 
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
+function updateCartQuantity() {
+  let cartQuantityTotal = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantityTotal += cartItem.quantity;
+  });
+
+  document.querySelector(".js-cart-quantity").innerHTML = cartQuantityTotal;
+}
+
 //looping through each "add to cart" button
 
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
@@ -76,58 +86,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     //const productId = button.dataset.productId
     const { productId } = button.dataset;
 
-    let matchingItem;
-
-    //checking if the product is already in the cart
-    cart.forEach((item) => {
-      if (productId === item.productId) {
-        matchingItem = item;
-      }
-    });
-
-    //getting the addedToCartMessage for each product
-    const addedToCartMessage = document.querySelector(
-      `.js-added-to-cart-${productId}`
-    );
-
-    //adding the active class with opacity 1
-    addedToCartMessage.classList.add("active");
-
-    //setting timeout to remove message after 1.2s
-    setTimeout(() => {
-      addedToCartMessage.classList.remove("active");
-    }, 1200);
-
-    //getting the select element for each product
-    const quantitySelector = document.querySelector(
-      `.js-quantity-selector-${productId}`
-    );
-
-    //converting the quanity into a number, by default its value is a string
-    const quantity = Number(quantitySelector.value);
-
-    //if the product is already in the cart, increase quantity by the number of quantity selected
-    if (matchingItem) {
-      matchingItem.quantity += quantity;
-    }
-
-    // if its not in the cart add it to the cart array
-    else {
-      cart.push({
-        productId,
-        quantity,
-      });
-    }
-
-    //looping through each object in the cart
-    //calculating total cart quantity
-
-    let cartQuantityTotal = 0;
-
-    cart.forEach((item) => {
-      cartQuantityTotal += item.quantity;
-    });
-
-    document.querySelector(".js-cart-quantity").innerHTML = cartQuantityTotal;
+    addToCart(productId); //passing the productId into the function
+    updateCartQuantity();
   });
 });

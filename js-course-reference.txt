@@ -95,7 +95,7 @@ Modules features - no name conflicts
     1. add type="module" attribute
     2. export the variable
     3. import the variable to another js file
-    
+
 
 import needs to be on top of the page
 
@@ -108,7 +108,7 @@ no worries about the order of files
 
 
 
-
+Best Practice is to group related code together
 
 
 
