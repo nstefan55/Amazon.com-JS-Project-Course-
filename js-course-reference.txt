@@ -111,5 +111,11 @@ no worries about the order of files
 Best Practice is to group related code together
 
 
+To change so you can select one of each product 3 delivery options use code bellow
+
+
+delivery-option-${matchingProduct.id}  instead of delivery-option-1
+
+
 
 
