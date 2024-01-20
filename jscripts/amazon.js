@@ -4,6 +4,8 @@ import { cart, addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utilities/money.js";
 
+updateCartQuantity();
+
 // Template HTML generating each product using object info from products.js
 let productsHTML = "";
 
