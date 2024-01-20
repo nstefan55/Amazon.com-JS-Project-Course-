@@ -1,8 +1,13 @@
-import { cart, removeFromCart } from "../data/cart.js";
+import {
+  cart,
+  removeFromCart,
+  updateCartQuantity,
+  updateQuantity,
+} from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utilities/money.js";
 
-updateCartQuantity();
+updateCartQuantity(); // displays number of items in the header
 
 let cartSummaryHTML = "";
 
@@ -40,15 +45,17 @@ cart.forEach((cartItem) => {
             matchingProduct.priceCents
           )}</div> 
           <div class="product-quantity">
-            <span> Quantity: <span class="quantity-label">${
-              cartItem.quantity
-            }</span> </span>
+            <span> Quantity: <span class="quantity-label js-quantity-label-${
+              matchingProduct.id
+            }">${cartItem.quantity}</span> </span>
             <span class="update-quantity-link link-primary js-update-link" data-product-id="${
               matchingProduct.id
             }">
               Update
             </span>
-            <input class="quantity-input js-quantity-input">
+            <input class="quantity-input js-quantity-input-${
+              matchingProduct.id
+            }">
             <span class="save-quantity-link link-primary js-save-link" data-product-id="${
               matchingProduct.id
             }">Save</span>
@@ -117,6 +124,9 @@ document.querySelectorAll(".js-update-link").forEach((updateLink) => {
     document
       .querySelector(`.js-cart-item-container-${productId}`)
       .classList.add("is-editing-quantity");
+
+    updateCartQuantity();
+    updateQuantity(productId, newQuantity);
   });
 });
 
@@ -130,9 +140,20 @@ document.querySelectorAll(".js-save-link").forEach((saveLink) => {
       .querySelector(`.js-cart-item-container-${productId}`)
       .classList.remove("is-editing-quantity");
 
-    const quantityInputValue = Number(
-      document.querySelector(".js-quantity-input").value
+    const quantityInput = document.querySelector(
+      `.js-quantity-input-${productId}`
     );
+
+    const newQuantity = Number(quantityInput.value);
+
+    updateQuantity(productId, newQuantity);
+
+    const quantityLabel = document.querySelector(
+      `.js-quantity-label-${productId}`
+    );
+
+    quantityLabel.innerHTML = newQuantity;
+    updateCartQuantity();
   });
 });
 
@@ -148,20 +169,8 @@ document.querySelectorAll(".js-delete-link").forEach((deleteLink) => {
       `.js-cart-item-container-${productId}`
     );
 
-    productContainer.remove(); //removing the product from the pageŽ
+    productContainer.remove(); //removing the product from the page
+
     updateCartQuantity();
   });
 });
-
-//calcutating cartQuantity and displaying it in the header
-function updateCartQuantity() {
-  let cartQuantity = 0;
-
-  cart.forEach((cartItem) => {
-    cartQuantity += cartItem.quantity;
-  });
-
-  document.querySelector(
-    ".js-return-to-home-link"
-  ).innerHTML = `${cartQuantity} Items`;
-}
