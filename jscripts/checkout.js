@@ -43,9 +43,15 @@ cart.forEach((cartItem) => {
             <span> Quantity: <span class="quantity-label">${
               cartItem.quantity
             }</span> </span>
-            <span class="update-quantity-link link-primary">
+            <span class="update-quantity-link link-primary js-update-link" data-product-id="${
+              matchingProduct.id
+            }">
               Update
             </span>
+            <input class="quantity-input js-quantity-input">
+            <span class="save-quantity-link link-primary js-save-link" data-product-id="${
+              matchingProduct.id
+            }">Save</span>
             <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${
               matchingProduct.id
             }">
@@ -102,13 +108,39 @@ cart.forEach((cartItem) => {
 // Generating html inside js
 document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML;
 
-//console.log(cartSummaryHTML);
+//selecting all update links on the checkout page
+
+document.querySelectorAll(".js-update-link").forEach((updateLink) => {
+  updateLink.addEventListener("click", () => {
+    const productId = updateLink.dataset.productId;
+
+    document
+      .querySelector(`.js-cart-item-container-${productId}`)
+      .classList.add("is-editing-quantity");
+  });
+});
+
+//selecting all save links on the checkout page
+
+document.querySelectorAll(".js-save-link").forEach((saveLink) => {
+  saveLink.addEventListener("click", () => {
+    const productId = saveLink.dataset.productId;
+
+    document
+      .querySelector(`.js-cart-item-container-${productId}`)
+      .classList.remove("is-editing-quantity");
+
+    const quantityInputValue = Number(
+      document.querySelector(".js-quantity-input").value
+    );
+  });
+});
 
 // selecting all delete links on the checkout page
-document.querySelectorAll(".js-delete-link").forEach((link) => {
+document.querySelectorAll(".js-delete-link").forEach((deleteLink) => {
   // when link is clicked, product with its id gets removed from cart with the function from cart.js
-  link.addEventListener("click", () => {
-    const productId = link.dataset.productId;
+  deleteLink.addEventListener("click", () => {
+    const productId = deleteLink.dataset.productId;
     removeFromCart(productId);
 
     //selecting which product to remove from the checkout
