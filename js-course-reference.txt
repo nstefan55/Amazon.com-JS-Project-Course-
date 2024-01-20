@@ -135,9 +135,9 @@ Deleting the Quantity from a product
 
         1.3 Removing the product from the page
 
-            1. use the DOM to get the element to remove
+            1. use the DOM to get the element to remove and save as a variable
 
-            2. 
+            2. removing the saved variable with .remove() function 
 
     2. update the html
 
