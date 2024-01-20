@@ -1,6 +1,6 @@
 // exporting cart variable so it can be used in other js files
 
-export const cart = [
+export let cart = [
   {
     productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     quantity: 2,
@@ -51,4 +51,18 @@ export function addToCart(productId) {
       quantity,
     });
   }
+}
+
+export function removeFromCart(productId) {
+  const newCart = []; //creating a new array
+
+  //looping through the new array and if the product is not eqaul to the product Id
+  //that we want to remove it will add it to the new array
+  cart.forEach((cartItem) => {
+    if (cartItem.productId !== productId) {
+      newCart.push(cartItem);
+    }
+  });
+
+  cart = newCart; //replacing the old cart with the updated cart
 }

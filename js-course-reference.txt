@@ -119,3 +119,28 @@ delivery-option-${matchingProduct.id}  instead of delivery-option-1
 
 
 
+Deleting the Quantity from a product 
+
+    1. remove the product from the cart
+
+        1.1 attacvhing the product id to the delete link
+
+        1.2 Steps for function removeFromCart
+
+            1. create a new array
+
+            2. loop through the array
+
+            3. add to the array each product except the productId
+
+    2. update the html
+
+
+
+
+
+
+
+
+
+
