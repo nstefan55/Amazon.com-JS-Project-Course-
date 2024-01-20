@@ -19,7 +19,9 @@ cart.forEach((cartItem) => {
   //console.log(matchingProduct);
   // cart html template
   cartSummaryHTML += `
-    <div class="cart-item-container">
+    <div class="cart-item-container js-cart-item-container-${
+      matchingProduct.id
+    }">
       <div class="delivery-date">Delivery date: Tuesday, June 21</div>
 
       <div class="cart-item-details-grid">
@@ -102,10 +104,16 @@ document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML;
 
 // selecting all delete links on the checkout page
 document.querySelectorAll(".js-delete-link").forEach((link) => {
+  // when link is clicked, product with its id gets removed from cart with the function from cart.js
   link.addEventListener("click", () => {
     const productId = link.dataset.productId;
-    console.log(productId);
     removeFromCart(productId);
-    console.log(cart);
+
+    //selecting which product to remove from the checkout
+    const productContainer = document.querySelector(
+      `.js-cart-item-container-${productId}`
+    );
+
+    productContainer.remove(); //removing the product from the page
   });
 });
