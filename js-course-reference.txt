@@ -192,5 +192,5 @@ const deliveryDate = currentDate.add(7, 'days'); //first param is the number of 
 console.log(deliveryDate.format('dddd, MMMM, D'));
 
 
-
+adding data attributes for accessing
 
