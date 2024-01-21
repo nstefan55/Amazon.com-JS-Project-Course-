@@ -1,23 +1,25 @@
 // exporting cart variable so it can be used in other js files
 
-export let cart = JSON.parse(localStorage.getItem("cart")); //converting string to array
+export let cart = JSON.parse(localStorage.getItem('cart')); //converting string to array
 
 //if there is no cart in localStorage, cart will be given default values
 if (!cart) {
   cart = [
     {
-      productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+      productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
       quantity: 2,
+      deliveryOptionId: '1',
     },
     {
-      productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+      productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
       quantity: 1,
+      deliveryOptionId: '2',
     },
   ];
 }
 
 export function saveToStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart)); //converting the cart into string and saving to local storage
+  localStorage.setItem('cart', JSON.stringify(cart)); //converting the cart into string and saving to local storage
 }
 
 export function addToCart(productId) {
@@ -35,11 +37,11 @@ export function addToCart(productId) {
     `.js-added-to-cart-${productId}`
   );
 
-  addedToCartMessage.classList.add("active"); //adding the active class with opacity 1
+  addedToCartMessage.classList.add('active'); //adding the active class with opacity 1
 
   //setting timeout to remove message after 1.2s
   setTimeout(() => {
-    addedToCartMessage.classList.remove("active");
+    addedToCartMessage.classList.remove('active');
   }, 1200);
 
   //getting the select element for each product
@@ -58,6 +60,7 @@ export function addToCart(productId) {
     cart.push({
       productId,
       quantity,
+      deliveryOptionId: '1',
     });
   }
 
@@ -89,7 +92,7 @@ export function updateCartQuantity() {
   });
 
   document.querySelector(
-    ".js-return-to-home-link"
+    '.js-return-to-home-link'
   ).innerHTML = `${cartQuantity} Items`;
 }
 

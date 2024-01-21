@@ -144,8 +144,52 @@ Deleting the Quantity from a product
 
 
 
+Lesson 15 Libraries
 
 
+To get the dates in checkout 
+
+    1. get today's date
+
+    2. do calculations ( add 7 days)
+
+    3. display the date in easy-to-read format
+
+
+
+Best Practice in Programming for something complicated
+
+- try to find an external library first.
+
+
+example "javascript date library"
+
+
+
+ESM Version of External Libraries to use JS Modules with External Libraries
+
+ESM = EcmaScript Module
+
+example "javascript date esm library"
+
+
+
+
+deliveryOptionsHTML function Steps
+
+    1. loop through deliveryOptions imported from deliveryOptions.JS
+
+    2. for each option generate html
+
+    3. combine all html together
+
+
+
+const currentDate = dayjs();
+
+const deliveryDate = currentDate.add(7, 'days'); //first param is the number of days and second is the lenght of time
+
+console.log(deliveryDate.format('dddd, MMMM, D'));
 
 
 
