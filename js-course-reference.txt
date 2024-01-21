@@ -194,3 +194,9 @@ console.log(deliveryDate.format('dddd, MMMM, D'));
 
 adding data attributes for accessing
 
+
+
+updating the page
+
+adding all the code in a function and running the function at the end and after each function that calculates
+
