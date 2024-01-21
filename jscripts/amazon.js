@@ -1,11 +1,11 @@
 // importing variables from another data js files
 
-import { cart, addToCart } from "../data/cart.js";
-import { products } from "../data/products.js";
-import { formatCurrency } from "./utilities/money.js";
+import { cart, addToCart } from '../data/cart.js';
+import { products } from '../data/products.js';
+import { formatCurrency } from './utils/money.js';
 
 // Template HTML generating each product using object info from products.js
-let productsHTML = "";
+let productsHTML = '';
 
 products.forEach((product) => {
   productsHTML += `
@@ -66,7 +66,7 @@ products.forEach((product) => {
 
 //Generating Products
 
-document.querySelector(".js-products-grid").innerHTML = productsHTML;
+document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 function updateCartQuantity() {
   let cartQuantity = 0;
@@ -75,13 +75,13 @@ function updateCartQuantity() {
     cartQuantity += cartItem.quantity;
   });
 
-  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 }
 
 //looping through each "add to cart" button
 
-document.querySelectorAll(".js-add-to-cart").forEach((button) => {
-  button.addEventListener("click", () => {
+document.querySelectorAll('.js-add-to-cart').forEach((button) => {
+  button.addEventListener('click', () => {
     //const productId = button.dataset.productId
     const { productId } = button.dataset;
 

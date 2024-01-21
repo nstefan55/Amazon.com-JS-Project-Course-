@@ -200,3 +200,22 @@ updating the page
 
 adding all the code in a function and running the function at the end and after each function that calculates
 
+
+MVC Method - Model-View-Controller ( Design Pattern ) used in Frameworks**
+
+popular technique
+
+    1. Model - all code that saves and manages the data 
+
+        data folder files*
+
+    2. View - takes the data and displays it on the page
+
+    3. Controller - Event listeners that do something when we interact on the page
+
+
+Controller updates the model and the process repeats
+
+
+
+
