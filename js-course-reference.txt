@@ -221,3 +221,6 @@ Controller updates the model and the process repeats
 
 
 
+Using MVC method to create functionallity 
+
+Model => View => Controller => Model...

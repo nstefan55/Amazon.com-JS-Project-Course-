@@ -15,8 +15,10 @@ import {
   getDeliveryOption,
 } from '../../data/deliveryOptions.js';
 
+import { renderPaymentSummary } from './paymentSummary.js'; //importing the render payment so we can use it to regenerate and calculate
+
 export function renderOrderSummary() {
-  updateCartQuantity(); // displays number of items in the header
+  updateCartQuantity(); // updates number of items in the header
   let cartSummaryHTML = '';
 
   cart.forEach((cartItem) => {
@@ -196,6 +198,9 @@ export function renderOrderSummary() {
       productContainer.remove(); //removing the product from the page
 
       updateQuantity(productId, newQuantity);
+
+      renderPaymentSummary(); // recalculating after deleting item(s)
+
       renderOrderSummary();
     });
   });
@@ -208,6 +213,7 @@ export function renderOrderSummary() {
 
       updateDeliveryOption(productId, deliveryOptionId);
       renderOrderSummary(); //updates the data and regenerates the updated code
+      renderPaymentSummary(); // recalculating after changing delivery option(s)
     });
   });
 }
