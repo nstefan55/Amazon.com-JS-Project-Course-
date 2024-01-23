@@ -5,12 +5,15 @@ import {
   updateQuantity,
   updateDeliveryOption,
 } from '../../data/cart.js';
-import { products } from '../../data/products.js';
+import { products, getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
-import { deliveryOptions } from '../../data/deliveryOptions.js';
+import {
+  deliveryOptions,
+  getDeliveryOption,
+} from '../../data/deliveryOptions.js';
 
 export function renderOrderSummary() {
   updateCartQuantity(); // displays number of items in the header
@@ -19,25 +22,11 @@ export function renderOrderSummary() {
   cart.forEach((cartItem) => {
     const { productId } = cartItem;
 
-    let matchingProduct;
-
-    //looping through products array
-    products.forEach((product) => {
-      if (product.id === productId) {
-        matchingProduct = product;
-      }
-    });
+    const matchingProduct = getProduct(productId);
 
     const deliveryOptionId = cartItem.deliveryOptionId; //getting delivery option id from the cart
 
-    let deliveryOption;
-
-    //checking if the IDs are equal for each
-    deliveryOptions.forEach((option) => {
-      if (option.id === deliveryOptionId) {
-        deliveryOption = option;
-      }
-    });
+    const deliveryOption = getDeliveryOption(deliveryOptionId);
 
     const currentDate = dayjs();
 
@@ -188,7 +177,6 @@ export function renderOrderSummary() {
       );
 
       quantityLabel.innerHTML = newQuantity; //changes input label quantity to the updated quantity
-      updateCartQuantity();
       renderOrderSummary();
     });
   });
@@ -208,7 +196,6 @@ export function renderOrderSummary() {
       productContainer.remove(); //removing the product from the page
 
       updateQuantity(productId, newQuantity);
-      updateCartQuantity();
       renderOrderSummary();
     });
   });
