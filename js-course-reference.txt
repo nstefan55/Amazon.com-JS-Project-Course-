@@ -224,3 +224,17 @@ Controller updates the model and the process repeats
 Using MVC method to create functionallity 
 
 Model => View => Controller => Model...
+
+
+
+Lesson 16 - Testing/Debugging
+
+
+Testing - opening the website and trying our code 
+
+
+2 Types of Test Cases
+
+    1. Basic test Cases - testing if the code works
+
+    2. Edge Cases - testing with tricky values
