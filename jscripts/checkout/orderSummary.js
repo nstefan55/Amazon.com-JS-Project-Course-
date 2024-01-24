@@ -1,24 +1,24 @@
 import {
   cart,
   removeFromCart,
-  updateCartQuantity,
   updateQuantity,
   updateDeliveryOption,
 } from '../../data/cart.js';
 import { products, getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
-
+import { renderCheckoutHeader } from './checkoutHeader.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 import {
   deliveryOptions,
   getDeliveryOption,
+  calculateDeliveryDate,
 } from '../../data/deliveryOptions.js';
 
 import { renderPaymentSummary } from './paymentSummary.js'; //importing the render payment so we can use it to regenerate and calculate
 
 export function renderOrderSummary() {
-  updateCartQuantity(); // updates number of items in the header
+  renderCheckoutHeader();
   let cartSummaryHTML = '';
 
   cart.forEach((cartItem) => {
@@ -30,11 +30,7 @@ export function renderOrderSummary() {
 
     const deliveryOption = getDeliveryOption(deliveryOptionId);
 
-    const currentDate = dayjs();
-
-    const deliveryDate = currentDate.add(deliveryOption.deliveryDays, 'days');
-
-    const dateString = deliveryDate.format('dddd, MMMM, D');
+    const dateString = calculateDeliveryDate(deliveryOption);
 
     // cart html template
     cartSummaryHTML += `
@@ -95,11 +91,7 @@ export function renderOrderSummary() {
     let html = '';
 
     deliveryOptions.forEach((deliveryOption) => {
-      const currentDate = dayjs();
-
-      const deliveryDate = currentDate.add(deliveryOption.deliveryDays, 'days');
-
-      const dateString = deliveryDate.format('dddd, MMMM, D');
+      const dateString = calculateDeliveryDate(deliveryOption);
 
       // asking if the price is equal to zero if it is after ? adds FREE string if not then displays code after :
       const priceString =
@@ -144,7 +136,7 @@ export function renderOrderSummary() {
         .classList.add('is-editing-quantity');
 
       updateQuantity(productId, newQuantity);
-      updateCartQuantity();
+      renderCheckoutHeader();
       renderOrderSummary();
     });
   });
@@ -180,6 +172,7 @@ export function renderOrderSummary() {
 
       quantityLabel.innerHTML = newQuantity; //changes input label quantity to the updated quantity
       renderOrderSummary();
+      renderPaymentSummary();
     });
   });
 
@@ -191,17 +184,12 @@ export function renderOrderSummary() {
       removeFromCart(productId);
 
       //selecting which product to remove from the checkout
-      const productContainer = document.querySelector(
-        `.js-cart-item-container-${productId}`
-      );
 
-      productContainer.remove(); //removing the product from the page
+      renderOrderSummary(); //regenerating html after deleting item(s)
 
       updateQuantity(productId, newQuantity);
 
       renderPaymentSummary(); // recalculating after deleting item(s)
-
-      renderOrderSummary();
     });
   });
 
