@@ -240,3 +240,14 @@ Testing - opening the website and trying our code
     1. Basic test Cases - testing if the code works
 
     2. Edge Cases - testing with tricky values
+
+
+
+
+Process of Testing : 
+
+    1. Write code 
+
+    2. Re-run all the tests
+
+    3. Save to Git Feature Branch then to Main
