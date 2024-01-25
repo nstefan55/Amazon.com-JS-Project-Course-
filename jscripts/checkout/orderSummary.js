@@ -185,11 +185,11 @@ export function renderOrderSummary() {
 
       //selecting which product to remove from the checkout
 
+      renderPaymentSummary(); // recalculating after deleting item(s)
+
       renderOrderSummary(); //regenerating html after deleting item(s)
 
       updateQuantity(productId, newQuantity);
-
-      renderPaymentSummary(); // recalculating after deleting item(s)
     });
   });
 

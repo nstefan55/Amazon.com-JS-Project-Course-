@@ -1,4 +1,4 @@
-import { formatCurrency } from '../jscripts/utils/money.js';
+import { formatCurrency } from '../../jscripts/utils/money.js';
 
 // creating the test suite
 describe('Test Suite: formatCurrency', () => {
