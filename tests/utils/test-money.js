@@ -20,5 +20,9 @@ describe('Test Suite: formatCurrency', () => {
     it('Rounds to the smaller cent', () => {
       expect(formatCurrency(2000.4)).toEqual('20.00');
     });
+
+    it('Works with negative numbers', () => {
+      expect(formatCurrency(-500)).toEqual('-5.00');
+    });
   });
 });

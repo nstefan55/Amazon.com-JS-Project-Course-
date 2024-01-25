@@ -1,5 +1,7 @@
 // exporting cart variable so it can be used in other js files
 
+import { getDeliveryOption } from './deliveryOptions';
+
 export let cart;
 
 loadFromStorage();
@@ -126,6 +128,15 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
       matchingItem = cartItem;
     }
   });
+
+  if (!matchingItem) {
+    return;
+  }
+
+  const deliveryOption = getDeliveryOption(deliveryOptionId);
+  if (!deliveryOption) {
+    return;
+  }
 
   matchingItem.deliveryOptionId = deliveryOptionId; //updating the ID with ID param given to the function
 
